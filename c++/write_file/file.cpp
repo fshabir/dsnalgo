@@ -10,5 +10,12 @@ int main() {
 	ofstream of("/tmp/test.txt", ios_base::out);
 	of << sentence << endl;
 	of.close();
+
+	char input[256];
+	ifstream iff("/tmp/test.txt", ios_base::in);
+	iff.getline(input, 255);
+	iff.close();
+	cout << input << endl;
+
 	return 0;
 }
