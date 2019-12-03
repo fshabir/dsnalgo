@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
@@ -32,5 +33,22 @@ int main() {
 		cout << "Strings are not equal" << endl;
 	}
 
+	// Size and capacity of std::string
+	cout << "Capacity: " << s0.capacity() << endl;
+	cout << "Size: " << s0.size() << endl;
+	cout << "Length: " << s0.length() << endl;
+	cout << "Max Size: " << s0.max_size() << endl;
+
+	// find, replace e.t.c
+	//cout << "t s: " << s0.find();
+	for (string::const_iterator it=s0.cbegin(); it != s0.cend(); it++){
+		cout << *it;
+	}
+	cout << endl;
+
+	s3.clear(); // Clears the string
+	cout << s3 << endl;
+
+	
 	return 0;
 }
