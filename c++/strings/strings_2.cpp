@@ -49,5 +49,24 @@ int main() {
 	//string.find_first_of()
 	//string.find_last_not_of()
 	//string.find_last_of()
+
+	//string s4("Test");
+	string s4;
+	s4.reserve(100);
+	s4 += "Test";
+	s4.resize(2);
+
+	cout << s4 << endl;
+	cout << "Size: " << s4.size() << endl;
+	cout << "Capacity: " << s4.capacity() << endl;
+
+	//Replace operations
+	string s5("This is a really really long string");
+	s5.replace(s5.find("really"), string("really").size() + 1, "");
+	cout << s5 << endl;
+
+	string s6("This is an example sentence");
+	s6.erase(s6.find("example"), string("example").size() + 1);
+	cout << s6 << endl;
 	return 0;
 }
