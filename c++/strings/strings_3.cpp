@@ -14,5 +14,10 @@ int main() {
 
 	cout << "String sent to the file" << endl;
 
+	char s1[256];
+	ifstream i_f("/tmp/test.txt", ios::in);
+	i_f.getline(s1, 255);
+
+	cout << "Read from file: " << s1 << endl;
 	return 0;
 }
