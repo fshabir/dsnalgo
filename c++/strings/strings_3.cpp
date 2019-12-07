@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 
 using namespace std;
 
@@ -19,5 +20,10 @@ int main() {
 	i_f.getline(s1, 255);
 
 	cout << "Read from file: " << s1 << endl;
+
+	// Check memory contents
+	if (memcmp(s1, s0.data(), s0.length()) == 0) {
+		cout << "The content of file didn't change after writing" << endl;
+	}
 	return 0;
 }
