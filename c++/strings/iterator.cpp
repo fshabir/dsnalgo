@@ -12,5 +12,11 @@ int main() {
 	while (it != s0.end()) {
 		cout << "Character: " << *(it++) << endl;
 	}
+
+	const char * pCh = s0.c_str();
+	while (pCh && *pCh) {
+		cout << *pCh++;
+	}
+	cout << endl;
 	return 0;
 }
