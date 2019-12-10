@@ -1,6 +1,8 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <sstream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -13,6 +15,15 @@ int main() {
 	while (word) {
 		cout << word << endl;
 		word = strtok(NULL, " ");
+	}
+
+	// Splitting using string stream
+	stringstream ss(string("This is a really sentence with spaces"));
+	string part;
+
+	cout << "Splitting using std:stringstream" << endl;
+	while (getline(ss, part, ' ')) {
+		cout << part << endl;
 	}
 
 	return 0;
