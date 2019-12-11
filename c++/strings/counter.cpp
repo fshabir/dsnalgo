@@ -19,5 +19,17 @@ int main() {
 	} while (pos != string::npos);
 
 	cout << "Found " << count << " occurrences of " << needle << endl;
+
+	// Finding count using cstring
+	const char * s1 = s0.data();
+	count = 0;
+	while (*s1) {
+		if (*s1++ == needle) {
+			count += 1;
+		}
+	}
+
+	cout << "Found " << count << " occurrences of " << needle << endl;
+
 	return 0;
 }
