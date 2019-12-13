@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <cstring>
+//#include <wstring>
 
 using namespace std;
 
@@ -17,5 +19,11 @@ int main() {
 	getline(cin, s1);
 
 	cout << "Welcome " << s1 << " さん" << endl;
+
+	wstring s3;
+	cout << "Enter name again: ";
+	// cin.getline(name, 7);
+	wcin >> s3;
+	wcout << "Entered: " << s3 << endl;
 	return 0;
 }
