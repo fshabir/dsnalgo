@@ -3,20 +3,54 @@
 
 using namespace std;
 
-int main() {
-	unsigned long long guesses[10];
+double average(unsigned long long *arr, size_t size) {
+	if (size == 0) return size;
 
-	unsigned int cnt = 0;
-	do {
-		cout << "Enter a guess: " << endl;
-		cin >> guesses[cnt];
-	} while(cnt++ < 10);
+	double sum = 0;
+	for (size_t i=0; i<size; i++){
+		sum += arr[i];
+	}
+
+	return sum / size;
+}
+
+void print(unsigned long long arr[], size_t size) {
+	for(size_t i=0; i < size; i++) {
+		cout << arr[i] << "  ";
+	}
+	cout << endl;
+}
+
+void doublify(unsigned long long arr[], size_t size) {
+	for(size_t i=0; i<size; i++) {
+		arr[i] = arr[i] * 2;
+	}
+}
+
+int main() {
+	unsigned long long numbers[10];
+
+	cout << "Enter a 10 positive numbers: " << endl;
+	for (size_t i=0; i<10; i++){
+		cin >> numbers[i];
+	}
 
 	unsigned long sum = 0;
-	for (auto num:guesses) {
+	for (auto num:numbers) {
 		sum += num;
 	}
 
-	cout << "Sum of guesses is: " << sum << endl;
+	cout << "Input array: ";
+	print(numbers, 10);
+
+	cout << "Sum of numbers is: " << sum << endl;
+
+	cout << "Average of array is: " << average(numbers, sizeof(numbers)/sizeof(unsigned long long)) << endl;
+
+	cout << "Size of array is: " << sizeof(numbers) / sizeof(unsigned long long) << endl;
+
+	doublify(numbers, 10);
+	cout << "Doubled array: ";
+	print(numbers, 10);
 	return 0;
 }
