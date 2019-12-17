@@ -11,8 +11,8 @@ private:
 public:
 	ArrayList(size_t _capacity=1) {
 		size = 0;
-		capacity = _capacity * 2;
-		array = new int[capacity];
+		capacity = _capacity;
+		array = new int[_capacity];
 	}
 
 	int append(int elm) {
