@@ -8,9 +8,11 @@ void maxMin(int arr[], int size) {
   int back = size-1;
   int cnt = 0;
 
-  while(front < back) {
+  while(front <= back) {
     temp[cnt++] = arr[back--];
-    temp[cnt++] = arr[front++];
+    if (front <= back) {
+      temp[cnt++] = arr[front++];
+    }
   }
 
   for (int i=0; i < size; i++) {
@@ -29,7 +31,9 @@ void print(int arr[], int size) {
 
 int main() {
 
+  int size = 7;
   int arr[] = {12,23,34,45,56,67,78};
+  // [78, 12, 67, 23, 56, 34, 45]
 
   print(arr, size);
   maxMin(arr, size);
