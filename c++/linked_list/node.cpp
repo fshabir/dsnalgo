@@ -1,19 +1,12 @@
 #include <iostream>
+#include "Node.h"
 
 using namespace std;
 
-class Node {
-public:
-	int data;
-	Node * next;
-
-	Node() {
-		this->next = nullptr;
-	}
-};
-
 int main() {
 	Node * head = nullptr;
-	
+
+	head->data = 5;
+	head->next = nullptr;
 	return 0;
 }
