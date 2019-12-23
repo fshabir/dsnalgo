@@ -17,6 +17,13 @@ public:
 	void insert(int data) {
 		Node * node = new Node;
 		node->data = data;
+		node->next = head;
+		head = node;
+	}
+
+	void append(int data) {
+		Node * node = new Node;
+		node->data = data;
 		node->next = nullptr;
 
 		if (!head) {
@@ -43,10 +50,13 @@ public:
 };
 
 int main() {
-
 	LinkedList list;
-	list.insert(3);
-	list.insert(5);
+	list.insert(2);
+	list.append(3);
+	list.append(5);
+	list.append(7);
+
+	list.insert(9);
 	list.insert(7);
 	list.print();
 	return 0;
