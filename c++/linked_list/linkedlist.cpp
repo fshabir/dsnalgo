@@ -14,6 +14,21 @@ public:
 		head = nullptr;
 	}
 
+	void insertAtTail(int value) {
+	    Node * newNode = new Node();
+	    newNode->data = value;
+	    newNode->next = nullptr;
+
+	    if (head == nullptr) {
+	      head = newNode;
+	    } else {
+	      while (head->next != nullptr) {
+	        head = head->next;
+	      }
+	      head->next = newNode;
+	    }
+	 }  
+
 	void insert(int data) {
 		Node * node = new Node;
 		node->data = data;
