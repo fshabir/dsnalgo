@@ -14,6 +14,17 @@ public:
 		head = nullptr;
 	}
 
+	bool search(int value){	
+	    Node * current = head;
+	    while(current) {
+	      if (current->data == value) {
+	        return true;
+	      }
+	      current = current->next;
+	    }
+	    return false;
+	 }
+
 	void insertAtTail(int value) {
 	    Node * newNode = new Node();
 	    newNode->data = value;
