@@ -85,6 +85,16 @@ public:
 		return false;
 	}
 
+	int length(){
+	  int count = 0;
+	  Node * current = head;
+	  while(current) {
+	    count += 1;
+	    current = current->next;
+	  }
+	  return count;
+	}
+
 	void print() {
 		cout << "LinkedList: ";
 		Node * start = head;
@@ -114,5 +124,7 @@ int main() {
 	list.print();
 	list.Delete(7);
 	list.print();
+
+	cout << "Length of list: " << list.length() << endl;
 	return 0;
 }
