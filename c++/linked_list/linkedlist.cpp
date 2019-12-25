@@ -63,6 +63,28 @@ public:
 		}
 	}
 
+	bool Delete(int data) {
+		Node * prev = nullptr, * current = head;
+		if (!head) {
+			return false;
+		} else if (head->data == data) {
+			head = head->next;
+			delete current;
+			return true;
+		} else {
+			while(current) {
+				if (current->data == data && prev != nullptr) {
+					prev->next = current->next;
+					delete current;
+					return true;
+				}
+				prev = current;
+				current = current->next;
+			}
+		}
+		return false;
+	}
+
 	void print() {
 		cout << "LinkedList: ";
 		Node * start = head;
@@ -84,6 +106,13 @@ int main() {
 
 	list.insert(9);
 	list.insert(7);
+	list.print();
+
+	list.Delete(2);
+	list.print();
+	list.Delete(7);
+	list.print();
+	list.Delete(7);
 	list.print();
 	return 0;
 }
