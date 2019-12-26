@@ -17,7 +17,8 @@ namespace LinkedList {
 	public:
 		DLL();
 
-		bool insert(int data);		
+		void insert(int data);
+		void append(int data);
 		std::string getList();
 		std::string reverse();
 	};
