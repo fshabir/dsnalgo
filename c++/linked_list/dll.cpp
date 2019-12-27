@@ -18,6 +18,10 @@ namespace LinkedList {
 		if (head) {
 			node->next = head;
 			head->prev = node;
+		}		
+
+		if (!head) {
+			tail = node;
 		}
 		head = node;
 	}
@@ -25,11 +29,16 @@ namespace LinkedList {
 	void DLL::append(int data) {
 		Node * node = new Node;
 		node->data = data;
-		node->prev = tail;
+		node->prev = nullptr;
 		node->next = nullptr;
 
 		if (tail) {
 			tail->next = node;
+			node->prev = tail;
+		}		
+
+		if (!tail) {
+			head = node;
 		}
 		tail = node;
 	}
@@ -52,6 +61,10 @@ int main() {
 	dll.insert(7);
 	dll.insert(10);
 	dll.insert(15);
+
+	dll.append(17);
+	dll.append(20);
+	dll.append(13);
 	cout << dll.getList() << endl;
 	return 0;
 }
