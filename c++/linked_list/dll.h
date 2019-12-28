@@ -24,5 +24,6 @@ namespace LinkedList {
 		void reverse2();
 		void insertLoop();
 		bool detectLoop();
+		int findMiddle();
 	};
 }

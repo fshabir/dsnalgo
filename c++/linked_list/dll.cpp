@@ -120,6 +120,27 @@ namespace LinkedList {
 		}
 		return false;
 	}
+
+	int DLL::findMiddle() {
+		Node * slow = head;
+		Node * fast = head;
+		if (head == nullptr) return -1;
+		if (head->next == nullptr) {
+			return head->data;
+		} else {
+			fast = head->next;
+			while (slow && fast && fast->next) {
+				slow = slow->next;
+				fast = fast->next->next;
+			}
+
+			if (fast == nullptr) {
+				return slow->data;
+			} else {
+				return slow->next->data;
+			}
+		}
+	}
 }
 
 int main() {
@@ -137,6 +158,7 @@ int main() {
 	cout << dll.getList() << endl;
 	dll.reverse2();
 	cout << dll.getList() << endl;
+	cout << "Middle Element: " << dll.findMiddle() << endl;
 	cout << "Dectected Loop: " << dll.detectLoop() << endl;
 	dll.insertLoop();
 	//cout << dll.getList() << endl;
