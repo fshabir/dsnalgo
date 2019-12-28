@@ -77,6 +77,19 @@ namespace LinkedList {
 		tail = head;
 		head = curr;
 	}
+
+	void DLL::reverse2() {
+		Node *temp, * current = head;
+		while (current) {
+			temp = current->next;
+			current->next = current->prev;
+			current->prev = temp;
+			current = temp;
+		}
+		temp = head;
+		head = tail;
+		tail = temp;
+	}
 }
 
 int main() {
@@ -91,6 +104,8 @@ int main() {
 	dll.append(13);
 	cout << dll.getList() << endl;
 	dll.reverse();
+	cout << dll.getList() << endl;
+	dll.reverse2();
 	cout << dll.getList() << endl;
 	return 0;
 }

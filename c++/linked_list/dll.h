@@ -21,5 +21,6 @@ namespace LinkedList {
 		void append(int data);
 		std::string getList();
 		void reverse();
+		void reverse2();
 	};
 }
