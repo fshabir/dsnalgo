@@ -53,6 +53,30 @@ namespace LinkedList {
 		str += "NULL";
 		return str;
 	}
+
+	void DLL::reverse() {
+		Node * prev, * curr, * next;
+		if (head) {
+			curr = head;
+			prev = head->prev;
+			next = head->next;
+		} else {
+			return; // List if empty
+		}
+
+		while (next) {
+			curr->next = prev;
+			curr->prev = next;
+
+			prev = curr;
+			curr = next;
+			next = next->next;
+		}
+		curr->prev = nullptr;
+		curr->next = prev;
+		tail = head;
+		head = curr;
+	}
 }
 
 int main() {
@@ -65,6 +89,8 @@ int main() {
 	dll.append(17);
 	dll.append(20);
 	dll.append(13);
+	cout << dll.getList() << endl;
+	dll.reverse();
 	cout << dll.getList() << endl;
 	return 0;
 }
