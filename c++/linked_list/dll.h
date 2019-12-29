@@ -22,5 +22,7 @@ namespace LinkedList {
 		std::string getList();
 		void reverse();
 		void reverse2();
+		void insertLoop();
+		bool detectLoop();
 	};
 }

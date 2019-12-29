@@ -90,6 +90,36 @@ namespace LinkedList {
 		head = tail;
 		tail = temp;
 	}
+
+	void DLL::insertLoop() {
+		Node * node = head;
+		if (node == nullptr) return;
+		
+		while(node->next) {
+			node = node->next;
+		}
+		node->next = head;
+	}
+
+	bool DLL::detectLoop() {
+		Node * slow = head;
+		Node * fast = head;
+		if (fast != nullptr) {
+			fast = fast->next;
+		}
+
+		while (fast != nullptr) {
+			if (fast == slow) {
+				return true;
+			}
+			slow = slow->next;
+			fast = fast->next;
+			if (fast != nullptr) {
+				fast = fast->next;
+			}
+		}
+		return false;
+	}
 }
 
 int main() {
@@ -107,5 +137,9 @@ int main() {
 	cout << dll.getList() << endl;
 	dll.reverse2();
 	cout << dll.getList() << endl;
+	cout << "Dectected Loop: " << dll.detectLoop() << endl;
+	dll.insertLoop();
+	//cout << dll.getList() << endl;
+	cout << "Dectected Loop: " << dll.detectLoop() << endl;
 	return 0;
 }
