@@ -32,6 +32,21 @@ void SLL::append(int data) {
 }
 
 bool SLL::deleteNode(int data) {
+	if (head == nullptr) return false;
+	if (head->data == data) {
+		head = head->nextElement;
+		return true;
+	}
+
+	Node * previous = head, * current = head->nextElement;
+	while (current) {
+		if (current->data == data) {
+			previous->nextElement = current->nextElement;
+			return true;
+		}
+		previous = current;
+		current = current->nextElement;
+	}
 	return false;
 }
 
@@ -74,5 +89,11 @@ int main() {
 	list.append(3);
 	list.append(1);
 	cout << "List after appending 3 and 1: " << list.getList() << endl;
+
+	list.deleteNode(5);
+	cout << "List after deleting 5: " << list.getList() << endl;
+
+	list.deleteNode(1);
+	cout << "List after deleting 1: " << list.getList() << endl;
 	return 0;
 }
