@@ -15,7 +15,7 @@ public:
 	void insert(int);
 	void append(int);
 	bool deleteNode(int);
-	int findNode(int);
+	bool findNode(int);
 	void insertCycle();
 	bool hasLoop();
 	int findLength();

@@ -50,8 +50,15 @@ bool SLL::deleteNode(int data) {
 	return false;
 }
 
-int SLL::findNode(int) {
-	return 0;
+bool SLL::findNode(int data) {
+	Node * current = head;
+	while (current) {
+		if (current->data == data) {
+			return true;
+		}
+		current = current->nextElement;
+	}
+	return false;
 }
 
 void SLL::insertCycle() {
@@ -64,7 +71,13 @@ bool SLL::hasLoop() {
 }
 
 int SLL::findLength() {
-	return 0;
+	int length = 0;
+	Node * current = head;
+	while (current) {
+		length += 1;
+		current = current->nextElement;
+	}
+	return length;
 }
 
 string SLL::getList() {
@@ -95,5 +108,10 @@ int main() {
 
 	list.deleteNode(1);
 	cout << "List after deleting 1: " << list.getList() << endl;
+
+	cout << "Is 8 present in the list: " << list.findNode(8) << endl;
+	cout << "Is 1 present in the list: " << list.findNode(1) << endl;
+
+	cout << "Length of list: " << list.findLength() << endl;	
 	return 0;
 }
