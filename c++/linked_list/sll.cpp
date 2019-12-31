@@ -42,6 +42,9 @@ bool SLL::deleteNode(int data) {
 	while (current) {
 		if (current->data == data) {
 			previous->nextElement = current->nextElement;
+			if (current == tail) {
+				tail = previous;
+			}
 			return true;
 		}
 		previous = current;
@@ -62,30 +65,49 @@ bool SLL::findNode(int data) {
 }
 
 void SLL::insertCycle() {
-
+	if (head != nullptr) {
+		tail->nextElement = head;
+	}
 }
 
 bool SLL::hasLoop() {
-
+	if (head == nullptr || head == tail) return false;
+	Node * slow = head, * fast = head->nextElement;
+	while (fast != nullptr) {
+		if (slow == fast) {
+			return true;
+		}
+		slow = slow->nextElement;
+		fast = fast->nextElement;
+		if (fast) {
+			fast = fast->nextElement;
+		}
+	}
 	return false;
 }
 
 int SLL::findLength() {
 	int length = 0;
 	Node * current = head;
-	while (current) {
+	while (current != nullptr && current != tail) {
 		length += 1;
 		current = current->nextElement;
+	}
+
+	if (current == tail) {
+		length += 1;
 	}
 	return length;
 }
 
 string SLL::getList() {
+	int length = this->findLength() + 1;
 	Node * current = head;
 	string list = "";
-	while (current) {
+	while (current != nullptr && length > 0) {
 		list += to_string(current->data) + " -> ";
 		current = current->nextElement;
+		length -= 1;
 	}
 	list += "NULL";
 	return list;
@@ -109,9 +131,19 @@ int main() {
 	list.deleteNode(1);
 	cout << "List after deleting 1: " << list.getList() << endl;
 
+	cout << "Does list have loop: " << list.hasLoop() << endl;
+
 	cout << "Is 8 present in the list: " << list.findNode(8) << endl;
 	cout << "Is 1 present in the list: " << list.findNode(1) << endl;
 
-	cout << "Length of list: " << list.findLength() << endl;	
+	cout << "Length of list: " << list.findLength() << endl;
+	list.append(9);
+	list.append(13);
+	cout << "List after appending 9 and 13: " << list.getList() << endl;
+
+	list.insertCycle();
+	cout << "List after inserting loop: " << list.getList() << endl;
+
+	cout << "Does list have loop: " << list.hasLoop() << endl;
 	return 0;
 }
