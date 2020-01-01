@@ -20,4 +20,5 @@ public:
 	bool hasLoop();
 	int findLength();
 	std::string getList();
+	void removeDuplicates();
 };

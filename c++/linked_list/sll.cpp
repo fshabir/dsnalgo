@@ -113,6 +113,25 @@ string SLL::getList() {
 	return list;
 }
 
+void SLL::removeDuplicates() {
+	if (head == nullptr || head == tail) return;
+	Node * current = head, * previous = head, * next = head->nextElement;
+	while (current != nullptr) {
+		while(next != nullptr) {
+			if (current->data == next->data) {
+				previous->nextElement = next->nextElement;
+			}
+			previous = next;
+			next = next->nextElement;
+		}
+		current = current->nextElement;
+		previous = current;
+		if (previous) {
+			next = previous->nextElement;
+		}
+	}
+}
+
 int main() {
 	SLL list;
 	cout << "List at the start: " << list.getList() << endl;
@@ -145,5 +164,19 @@ int main() {
 	cout << "List after inserting loop: " << list.getList() << endl;
 
 	cout << "Does list have loop: " << list.hasLoop() << endl;
+
+	SLL list2;
+	list2.append(2);
+	list2.append(4);
+	list2.append(6);
+	list2.append(8);
+	list2.append(4);
+	list2.append(6);
+	list2.append(10);
+	list2.append(8);
+	list2.append(12);
+	cout << "List2 initially: " << list2.getList() << endl;
+	list2.removeDuplicates();
+	cout << "List2 after removing duplicates: " << list2.getList() << endl;
 	return 0;
 }
