@@ -38,13 +38,15 @@ bool SLL::deleteNode(int data) {
 		return true;
 	}
 
-	Node * previous = head, * current = head->nextElement;
+	Node * previous = head, * current = head->nextElement, * temp;
 	while (current) {
 		if (current->data == data) {
 			previous->nextElement = current->nextElement;
+			temp = current;
 			if (current == tail) {
 				tail = previous;
 			}
+			delete temp;
 			return true;
 		}
 		previous = current;
@@ -115,14 +117,18 @@ string SLL::getList() {
 
 void SLL::removeDuplicates() {
 	if (head == nullptr || head == tail) return;
-	Node * current = head, * previous = head, * next = head->nextElement;
+	Node * current = head, * previous = head, * next = head->nextElement, * temp;
 	while (current != nullptr) {
 		while(next != nullptr) {
 			if (current->data == next->data) {
+				temp = next;
 				previous->nextElement = next->nextElement;
+				next = next->nextElement;
+				delete temp;
+			} else {
+				previous = next;
+				next = next->nextElement;
 			}
-			previous = next;
-			next = next->nextElement;
 		}
 		current = current->nextElement;
 		previous = current;
@@ -171,6 +177,7 @@ int main() {
 	list2.append(6);
 	list2.append(8);
 	list2.append(4);
+	list2.append(6);
 	list2.append(6);
 	list2.append(10);
 	list2.append(8);
