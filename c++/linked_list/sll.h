@@ -2,12 +2,17 @@
 
 #include <string>
 
+class Node {
+public:
+	int data;
+	Node * nextElement;
+	Node() {
+		nextElement = nullptr;
+	}
+};
+
 class SLL {
 private:
-	struct Node {
-		int data;
-		Node * nextElement;
-	};
 	Node * head;
 	Node * tail;
 public:
@@ -21,4 +26,6 @@ public:
 	int findLength();
 	std::string getList();
 	void removeDuplicates();
+	Node* getHead();
+	std::string Union(SLL, SLL);
 };

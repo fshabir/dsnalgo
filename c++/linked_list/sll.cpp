@@ -138,6 +138,29 @@ void SLL::removeDuplicates() {
 	}
 }
 
+Node* SLL::getHead() {
+	return this->head;
+}
+
+string SLL::Union(SLL list1, SLL list2) {
+	SLL list3;
+	Node * current;
+	current = list1.getHead();
+	while (current != nullptr) {
+		list3.append(current->data);
+		current = current->nextElement;
+	}
+
+	current = list2.getHead();
+	while (current != nullptr) {
+		list3.append(current->data);
+		current = current->nextElement;
+	}
+
+	list3.removeDuplicates();
+	return list3.getList();
+}
+
 int main() {
 	SLL list;
 	cout << "List at the start: " << list.getList() << endl;
@@ -185,5 +208,20 @@ int main() {
 	cout << "List2 initially: " << list2.getList() << endl;
 	list2.removeDuplicates();
 	cout << "List2 after removing duplicates: " << list2.getList() << endl;
+
+	SLL list3, list4;
+	list3.append(8);
+	list3.append(9);
+	list3.append(6);
+	list3.append(4);
+
+	list4.append(6);
+	list4.append(2);
+	list4.append(6);
+	list4.append(7);
+	list4.append(7);
+	cout << "List 3: " << list3.getList() << endl;
+	cout << "List 4: " << list4.getList() << endl;
+	cout << "Union of list 3 and list 4: " << list3.Union(list3, list4) << endl;
 	return 0;
 }
