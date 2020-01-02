@@ -161,6 +161,25 @@ string SLL::Union(SLL list1, SLL list2) {
 	return list3.getList();
 }
 
+std::string SLL::Intersection(SLL list1, SLL list2) {
+	SLL list3;
+	Node * current, * next;
+	current = list1.getHead();
+	while (current != nullptr) {
+		next = list2.getHead();
+		while (next != nullptr) {
+			if (current->data == next->data) {
+				list3.append(current->data);
+				break;
+			}
+			next = next->nextElement;
+		}
+		current = current->nextElement;
+	}
+	list3.removeDuplicates();
+	return list3.getList();
+}
+
 int main() {
 	SLL list;
 	cout << "List at the start: " << list.getList() << endl;
@@ -223,5 +242,20 @@ int main() {
 	cout << "List 3: " << list3.getList() << endl;
 	cout << "List 4: " << list4.getList() << endl;
 	cout << "Union of list 3 and list 4: " << list3.Union(list3, list4) << endl;
+
+	SLL list5, list6;
+	list5.append(1);
+	list5.append(3);
+	list5.append(6);
+	list5.append(1);
+
+	list6.append(2);
+	list6.append(3);
+	list6.append(1);
+	list6.append(6);
+	list6.append(3);
+	cout << "List 5: " << list5.getList() << endl;
+	cout << "List 6: " << list6.getList() << endl;
+	cout << "Intersection of List 5 and List 6: " << list5.Intersection(list5, list6) << endl;
 	return 0;
 }

@@ -28,4 +28,5 @@ public:
 	void removeDuplicates();
 	Node* getHead();
 	std::string Union(SLL, SLL);
+	std::string Intersection(SLL, SLL);
 };
