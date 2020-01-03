@@ -29,4 +29,5 @@ public:
 	Node* getHead();
 	std::string Union(SLL, SLL);
 	std::string Intersection(SLL, SLL);
+	int findNth(int);
 };

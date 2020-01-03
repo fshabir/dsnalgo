@@ -161,6 +161,27 @@ string SLL::Union(SLL list1, SLL list2) {
 	return list3.getList();
 }
 
+int SLL::findNth(int n) {
+	Node * current = this->head;
+	int remaining, total = 0;
+	while (current != nullptr) {
+		total += 1;
+		current = current->nextElement;
+	}
+
+	current = this->head;
+	remaining = total;
+	while (current != nullptr) {
+		if (remaining == n) {
+			return current->data;
+		}
+		remaining -= 1;
+		current = current->nextElement;
+	}
+
+	return -1;
+}
+
 std::string SLL::Intersection(SLL list1, SLL list2) {
 	SLL list3;
 	Node * current, * next;
@@ -257,5 +278,9 @@ int main() {
 	cout << "List 5: " << list5.getList() << endl;
 	cout << "List 6: " << list6.getList() << endl;
 	cout << "Intersection of List 5 and List 6: " << list5.Intersection(list5, list6) << endl;
+
+	cout << "2nd element from the last of List 6 is: " << list6.findNth(2) << endl;
+	cout << "4th element from the last of List 6 is: " << list6.findNth(4) << endl;
+	cout << "10th element from the last of List 6 is: " << list6.findNth(10) << endl;
 	return 0;
 }
