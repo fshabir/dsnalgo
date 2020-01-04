@@ -13,5 +13,7 @@ namespace DS {
 		bool isEmpty();
 		int getFront();
 		int getSize();
+		bool enqueue(int);
+		int dequeue();
 	};
 };

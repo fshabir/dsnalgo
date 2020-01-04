@@ -35,9 +35,43 @@ int Queue::getSize() {
 	return numElements;
 }
 
+bool Queue::enqueue(int data) {
+	if (numElements < capacity) {
+		back += 1;
+		queueArr[back] = data;
+		numElements += 1;
+		return true;
+	} else {
+		return false;
+	}
+}
+
+int Queue::dequeue() {
+	if (!isEmpty()) {
+		int temp = queueArr[front];
+		for (int i=0; i < numElements; i++) {
+			queueArr[i] = queueArr[i+1];
+		}
+		back -= 1;
+		numElements -= 1;
+		return temp;
+	}
+	return -1;
+}
+
 int main() {
 	Queue queue(10);
 
+	cout << "Size of the queue: " << queue.getSize() << endl;
+	queue.enqueue(10);
+	queue.enqueue(15);
+	queue.enqueue(17);
+	queue.enqueue(19);
+	cout << "Size of the queue: " << queue.getSize() << endl;
+	cout << queue.dequeue() << endl;
+	cout << queue.dequeue() << endl;
+	cout << queue.dequeue() << endl;
+	cout << queue.dequeue() << endl;
 	cout << "Size of the queue: " << queue.getSize() << endl;
 	return 0;
 }
