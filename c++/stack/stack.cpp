@@ -10,6 +10,7 @@ Stack::Stack(int capacity) {
 	else
 		stackArr = new int[0];
 	numElements = 0;
+	this->capacity = capacity;
 	top = -1;
 }
 
@@ -33,9 +34,8 @@ int Stack::getSize() {
 }
 
 bool Stack::push(int data) {
-	if (top < numElements) {
-		top += 1;
-		stackArr[top] = data;
+	if (numElements < capacity) {
+		stackArr[++top] = data;
 		numElements += 1;
 		return true;
 	}
@@ -44,9 +44,8 @@ bool Stack::push(int data) {
 
 int Stack::pop() {
 	if (!isEmpty()) {
-		top -= 1;
 		numElements -= 1;
-		return stackArr[top];
+		return stackArr[top--];
 	}
 	return -1;
 }
