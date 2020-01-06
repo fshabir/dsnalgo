@@ -15,5 +15,6 @@ namespace DS {
 		int getSize();
 		bool enqueue(int);
 		int dequeue();
+		void showQueue();
 	};
 };

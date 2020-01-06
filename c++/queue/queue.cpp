@@ -59,6 +59,14 @@ int Queue::dequeue() {
 	return -1;
 }
 
+void Queue::showQueue() {
+	cout << "Queue: [ ";
+	for (int i=front; i <= back; i++) {
+		cout << queueArr[i] << " ";
+	}
+	cout << "]" << endl;
+}
+
 int main() {
 	Queue queue(10);
 
@@ -68,10 +76,12 @@ int main() {
 	queue.enqueue(17);
 	queue.enqueue(19);
 	cout << "Size of the queue: " << queue.getSize() << endl;
+	queue.showQueue();
 	cout << queue.dequeue() << endl;
 	cout << queue.dequeue() << endl;
 	cout << queue.dequeue() << endl;
 	cout << queue.dequeue() << endl;
 	cout << "Size of the queue: " << queue.getSize() << endl;
+	queue.showQueue();
 	return 0;
 }
