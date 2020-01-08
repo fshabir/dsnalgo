@@ -28,13 +28,31 @@ Queue reverse(Queue queue, int k) {
 	return queue;
 }
 
+Queue reverse2(Queue queue, int k) {
+	Stack st(k);
+	int count = 0, size = queue.getSize();
+	while (count < k) {
+		st.push(queue.dequeue());
+		count += 1;
+	}
+
+	while(!st.isEmpty()) {
+		queue.enqueue(st.pop());
+	}
+
+	for (int i=0; i < (size - k); i++) {
+		queue.enqueue(queue.dequeue());
+	}
+	return queue;
+}
+
 int main() {
 	Queue queue(10);
 	for (int i=1;i<=10; i++) {
 		queue.enqueue(i);
 	}
 
-	queue = reverse(queue, 5);
+	queue = reverse2(queue, 5);
 	cout << "[ ";
 	for (int i=1;i<=10; i++) {
 		cout << queue.dequeue() << " ";
