@@ -57,21 +57,15 @@ int* nextGreaterElement3(int *arr, int size) {
 
 	for (int i=size-1; i>=0; i--) {
 		current = arr[i];
-		
-		if (st.size() > 0) {
-			top = st.top();
-			st.pop();
-			st.push(top);
-		}
+		top = st.empty() ? current : st.top();
 
 		while (!st.empty() && top <= current) {
-			top = st.top();
 			st.pop();
+			top = st.top();
 		}
 
 		if (!st.empty()) {
-			result[i] = top;
-			st.push(top);
+			result[i] = st.top();
 		} else {
 			result[i] = -1;
 		}
