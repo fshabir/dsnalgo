@@ -50,20 +50,51 @@ int* nextGreaterElement2(int *arr, int size) {
 	return result;
 }
 
+int* nextGreaterElement3(int *arr, int size) {
+	int * result = new int[size];
+	stack<int> st;
+	int top, current;
+
+	for (int i=size-1; i>=0; i--) {
+		current = arr[i];
+		
+		if (st.size() > 0) {
+			top = st.top();
+			st.pop();
+			st.push(top);
+		}
+
+		while (!st.empty() && top <= current) {
+			top = st.top();
+			st.pop();
+		}
+
+		if (!st.empty()) {
+			result[i] = top;
+			st.push(top);
+		} else {
+			result[i] = -1;
+		}
+
+		st.push(current);
+	}
+
+	return result;
+}
 
 int main () {
 
 	// 13,3,12,16,15,1
 	int * arr = new int[6];
-	arr[0] = 13;
-	arr[1] = 3;
-	arr[2] = 12;
-	arr[3] = 16;
-	arr[4] = 15;
-	arr[5] = 1;
+	arr[0] = 4;
+	arr[1] = 8;
+	arr[2] = 14;
+	arr[3] = 2;
+	arr[4] = 16;
+	arr[5] = 18;
 
 	//arr = nextGreaterElement(arr, 6);
-	arr = nextGreaterElement2(arr, 6);
+	arr = nextGreaterElement3(arr, 6);
 
 	cout << "[ ";
 	for (int i=0; i<6; i++) {
